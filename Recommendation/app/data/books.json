@@ -58,5 +58,249 @@
       "Boosted my confidence",
       "Changed my mindset completely"
     ]
+  },
+
+  {
+    "title": "Ikigai",
+    "author": "Hector Garcia",
+    "genre": ["self-help"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["self_improvement"],
+    "description": "Find purpose in life",
+    "reviews": [
+      "Simple and meaningful",
+      "Helped me understand life direction"
+    ]
+  },
+  {
+    "title": "The Power of Now",
+    "author": "Eckhart Tolle",
+    "genre": ["spiritual"],
+    "emotion_tags": ["stress"],
+    "intent_tags": ["relaxation"],
+    "description": "Live in the present moment",
+    "reviews": [
+      "Very calming book",
+      "Reduced my anxiety"
+    ]
+  },
+  {
+    "title": "Rich Dad Poor Dad",
+    "author": "Robert Kiyosaki",
+    "genre": ["finance"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["education"],
+    "description": "Learn financial mindset",
+    "reviews": [
+      "Changed my thinking about money",
+      "Very practical advice"
+    ]
+  },
+  {
+    "title": "Think and Grow Rich",
+    "author": "Napoleon Hill",
+    "genre": ["self-help"],
+    "emotion_tags": ["low_confidence"],
+    "intent_tags": ["self_improvement"],
+    "description": "Success mindset principles",
+    "reviews": [
+      "Very motivating",
+      "Powerful ideas"
+    ]
+  },
+  {
+    "title": "The Subtle Art of Not Giving a F*ck",
+    "author": "Mark Manson",
+    "genre": ["self-help"],
+    "emotion_tags": ["stress"],
+    "intent_tags": ["relaxation"],
+    "description": "Focus on what matters",
+    "reviews": [
+      "Very realistic advice",
+      "Changed my perspective"
+    ]
+  },
+
+  {
+    "title": "Start With Why",
+    "author": "Simon Sinek",
+    "genre": ["business"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["education"],
+    "description": "Discover purpose in work",
+    "reviews": [
+      "Great leadership insights",
+      "Helps find purpose"
+    ]
+  },
+  {
+    "title": "Zero to One",
+    "author": "Peter Thiel",
+    "genre": ["startup"],
+    "emotion_tags": ["motivation"],
+    "intent_tags": ["education"],
+    "description": "Build innovative startups",
+    "reviews": [
+      "Very innovative ideas",
+      "Good for entrepreneurs"
+    ]
+  },
+  {
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "genre": ["business"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["education"],
+    "description": "Startup methodology",
+    "reviews": [
+      "Best for beginners",
+      "Very practical framework"
+    ]
+  },
+  {
+    "title": "Crushing It",
+    "author": "Gary Vaynerchuk",
+    "genre": ["business"],
+    "emotion_tags": ["motivation"],
+    "intent_tags": ["self_improvement"],
+    "description": "Build personal brand",
+    "reviews": [
+      "Very inspiring",
+      "Practical examples"
+    ]
+  },
+  {
+    "title": "Rework",
+    "author": "Jason Fried",
+    "genre": ["business"],
+    "emotion_tags": ["motivation"],
+    "intent_tags": ["education"],
+    "description": "Simple business strategies",
+    "reviews": [
+      "Very straightforward",
+      "Useful for startups"
+    ]
+  },
+
+  {
+    "title": "Eloquent JavaScript",
+    "author": "Marijn Haverbeke",
+    "genre": ["technical"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "Learn JavaScript deeply",
+    "reviews": [
+      "Great for beginners",
+      "Very clear explanations"
+    ]
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "genre": ["technical"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "Write better code",
+    "reviews": [
+      "Improves coding quality",
+      "Must-read for developers"
+    ]
+  },
+  {
+    "title": "You Don’t Know JS",
+    "author": "Kyle Simpson",
+    "genre": ["technical"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "Deep dive into JavaScript",
+    "reviews": [
+      "Advanced concepts",
+      "Very detailed"
+    ]
+  },
+  {
+    "title": "Cracking the Coding Interview",
+    "author": "Gayle McDowell",
+    "genre": ["technical"],
+    "emotion_tags": ["fear"],
+    "intent_tags": ["education"],
+    "description": "Prepare for coding interviews",
+    "reviews": [
+      "Best for interviews",
+      "Covers all topics"
+    ]
+  },
+  {
+    "title": "Introduction to Algorithms",
+    "author": "Thomas H. Cormen",
+    "genre": ["technical"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "Advanced algorithm concepts",
+    "reviews": [
+      "Very detailed",
+      "Great for deep learning"
+    ]
+  },
+
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": ["fantasy"],
+    "emotion_tags": ["happy"],
+    "intent_tags": ["entertainment"],
+    "description": "Fantasy adventure story",
+    "reviews": [
+      "Very engaging",
+      "Fun to read"
+    ]
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "genre": ["romance"],
+    "emotion_tags": ["sadness"],
+    "intent_tags": ["general"],
+    "description": "Emotional love story",
+    "reviews": [
+      "Very emotional",
+      "Beautiful story"
+    ]
+  },
+  {
+    "title": "Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "genre": ["mystery"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["entertainment"],
+    "description": "Detective mystery stories",
+    "reviews": [
+      "Very interesting cases",
+      "Keeps you engaged"
+    ]
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "genre": ["thriller"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["entertainment"],
+    "description": "Fast-paced mystery thriller",
+    "reviews": [
+      "Very thrilling",
+      "Hard to put down"
+    ]
+  },
+  {
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "genre": ["history"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "History of humankind",
+    "reviews": [
+      "Very informative",
+      "Eye-opening"
+    ]
   }
 ]
