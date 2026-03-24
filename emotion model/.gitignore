@@ -1,0 +1,40 @@
+# 🔥 Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 🔥 Virtual environment
+venv/
+env/
+ENV/
+
+# 🔥 Model files (optional: ignore large files)
+model/*.pkl
+utils/*.pkl
+
+# 🔥 OS files
+.DS_Store
+Thumbs.db
+
+# 🔥 Logs
+*.log
+
+# 🔥 Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# 🔥 Environment variables
+.env
+
+# 🔥 VS Code / IDE
+.vscode/
+.idea/
+
+# 🔥 Build files
+dist/
+build/
+*.egg-info/
+
+# 🔥 Temporary files
+*.tmp
+*.bak
