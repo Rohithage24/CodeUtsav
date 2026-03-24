@@ -11,6 +11,7 @@ import profileRouter     from "./routes/profile.routes.js";
 import userEmotionRoutes from "./routes/recomendation.routes.js";
 import bookRoutes        from "./routes/book.routes.js";
 import communityRoutes   from "./routes/community.routes.js";
+import bookRec           from "./routes/bookReco.router.js"
 
 dotenv.config();
 
@@ -53,6 +54,7 @@ app.use("/api/profile",   profileRouter);
 app.use("/api/emotion",   userEmotionRoutes);
 app.use("/api/books",     bookRoutes);
 app.use("/api/community", communityRoutes);
+app.use("/api/bookRe",bookRec)
 
 // ── 404 Handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {

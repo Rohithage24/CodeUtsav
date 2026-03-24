@@ -57,7 +57,7 @@ const start = async () => {
     console.log(`   POST   http://localhost:${PORT}/api/community/post/:id/comment/:commentId/like [protected]`);
 
     console.log(`\n📋 ── HEALTH ─────────────────────────────────────────────────`);
-    console.log(`   GET    http://localhost:${PORT}/health\n`);
+
   });
 
   const shutdown = (signal) => {
