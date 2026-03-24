@@ -1227,3 +1227,207 @@ body {
   text-align: center; font-size: 0.7rem; 
   color: var(--text-muted); margin-top: 15px;
 }
+/* --- MAGIC PAGE REVEAL --- */
+
+/* .chatbot-wrapper {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 450px;
+  overflow: hidden; 
+  z-index: 2500;
+}
+
+.magic-page-flip {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #fff, #f0f0f0);
+  z-index: 3000;
+  transform-origin: left;
+  animation: pageSweep 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  box-shadow: -10px 0 50px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes pageSweep {
+  0% { transform: rotateY(0deg); left: 0; }
+  100% { transform: rotateY(-90deg); left: -100%; opacity: 0; }
+}
+
+
+.chatbot-drawer {
+  height: 100%;
+  background: rgba(10, 11, 20, 0.95);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.4s ease;
+}
+
+.hide-ui { opacity: 0; }
+.show-ui { opacity: 1; }
+
+
+.chat-messages {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 25px;
+} */
+
+/*----- another css to filp the page------------*/
+
+/* --- REALISTIC PAGE FLIP REVEAL --- */
+
+.book-container {
+  position: fixed;
+  right: 20px;
+  top: 5%;
+  width: 450px;
+  height: 90vh;
+  perspective: 2000px; 
+  z-index: 3000;
+}
+
+
+.flipping-page {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  transform-style: preserve-3d;
+  transform-origin: left; 
+  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.flipping-page.flipped {
+  transform: rotateY(-180deg); 
+}
+
+.page-front, .page-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 0 15px 15px 0;
+}
+
+.page-front {
+  background: #1a1b26;
+  border-left: 5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.page-back {
+  background: #11121a;
+  transform: rotateY(180deg); 
+  border-right: 5px solid var(--accent);
+}
+
+.chatbot-page {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 20, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 15px 15px 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+.page-content { text-align: center; opacity: 0.7; }
+.page-content span { font-size: 3rem; display: block; margin-bottom: 10px; }
+
+.chat-messages {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px; 
+}
+
+
+/* --- SPREAD VIEW BOOK --- */
+
+.book-container {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 450px; /* Single page width */
+  height: 85vh;
+  perspective: 2500px;
+  transition: width 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* When flipped, the container expands to hold two pages */
+.book-container.spread-view {
+  width: 900px; /* Double width! */
+}
+
+.flipping-page {
+  position: absolute;
+  right: 0; /* Align to the right side of the spread */
+  width: 450px;
+  height: 100%;
+  z-index: 10;
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.flipping-page.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* THE RECOMMENDATION PAGE (Back of the flip) */
+.page-back {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 16, 25, 0.98);
+  transform: rotateY(180deg); /* Counter-rotate to be readable */
+  backface-visibility: hidden;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid var(--accent); /* The new middle spine */
+  box-shadow: inset -20px 0 40px rgba(0,0,0,0.5);
+}
+
+.rec-header h4 { margin-bottom: 25px; letter-spacing: 1px; }
+
+.rec-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+
+.rec-item-glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.rec-item-glass:hover { background: rgba(255, 255, 255, 0.07); transform: translateX(5px); }
+
+.rec-title { font-weight: 600; font-size: 0.9rem; }
+.rec-author { font-size: 0.75rem; color: var(--text-muted); }
+
+.rec-add {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+  width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+}
+
+.page-footer { text-align: center; font-size: 0.7rem; opacity: 0.3; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+/* CHATBOT PAGE (Stays on the right) */
+.chatbot-page {
+  position: absolute;
+  right: 0;
+  width: 450px;
+  height: 100%;
+  background: rgba(10, 11, 20, 0.99);
+  z-index: 5;
+  border-radius: 0 15px 15px 0;
+}
