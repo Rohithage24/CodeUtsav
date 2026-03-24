@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import connectDB from "./config/mongodb.js";
-import server from "./app.js";
+import server    from "./app.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -32,18 +32,22 @@ const start = async () => {
     console.log(`   POST   http://localhost:${PORT}/api/emotion/save              [protected]`);
     console.log(`   POST   http://localhost:${PORT}/api/emotion/feedback          [protected]`);
 
+    console.log(`\n📋 ── BOOK ROUTES (/api/books) ───────────────────────────────`);
+    console.log(`   GET    http://localhost:${PORT}/api/books/all`);
+    console.log(`   GET    http://localhost:${PORT}/api/books/by-tags?emotion_tags=stress,fear`);
+    console.log(`   GET    http://localhost:${PORT}/api/books/:id`);
+    console.log(`   POST   http://localhost:${PORT}/api/books/add                 [protected]`);
+    console.log(`   POST   http://localhost:${PORT}/api/books/bulk                [protected]`);
+    console.log(`   PATCH  http://localhost:${PORT}/api/books/:id                 [protected]`);
+    console.log(`   DELETE http://localhost:${PORT}/api/books/:id                 [protected]`);
+
     console.log(`\n📋 ── HEALTH ─────────────────────────────────────────────────`);
-    console.log(`   GET    http://localhost:${PORT}/health`);
-    console.log(`\n`);
+    console.log(`   GET    http://localhost:${PORT}/health\n`);
   });
 
-  // ── Graceful shutdown ──────────────────────────────────────────────────────
   const shutdown = (signal) => {
     console.log(`\n${signal} received — shutting down...`);
-    server.close(() => {
-      console.log("Server closed.");
-      process.exit(0);
-    });
+    server.close(() => { console.log("Server closed."); process.exit(0); });
   };
 
   process.on("SIGINT",  () => shutdown("SIGINT"));

@@ -9,6 +9,7 @@ import dotenv       from "dotenv";
 import authRoutes        from "./routes/auth.routes.js";
 import profileRouter     from "./routes/profile.routes.js";
 import userEmotionRoutes from "./routes/recomendation.routes.js"; // ✅ FIX: was commented out
+import bookRoutes        from "./routes/book.routes.js";
 
 dotenv.config();
 
@@ -49,6 +50,7 @@ app.get("/health", (req, res) => {
 app.use("/api/user",    authRoutes);
 app.use("/api/profile", profileRouter);
 app.use("/api/emotion", userEmotionRoutes); // ✅ FIX: was commented out
+app.use("/api/books",   bookRoutes); 
 
 // ── 404 Handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {
