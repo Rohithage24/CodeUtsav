@@ -8,7 +8,9 @@ import dotenv       from "dotenv";
 
 import authRoutes        from "./routes/auth.routes.js";
 import profileRouter     from "./routes/profile.routes.js";
-import userEmotionRoutes from "./routes/recomendation.routes.js"; // ✅ FIX: was commented out
+import userEmotionRoutes from "./routes/recomendation.routes.js";
+import bookRoutes        from "./routes/book.routes.js";
+import communityRoutes   from "./routes/community.routes.js";
 
 dotenv.config();
 
@@ -46,9 +48,11 @@ app.get("/health", (req, res) => {
 });
 
 // ── API Routes ────────────────────────────────────────────────────────────────
-app.use("/api/user",    authRoutes);
-app.use("/api/profile", profileRouter);
-app.use("/api/emotion", userEmotionRoutes); // ✅ FIX: was commented out
+app.use("/api/user",      authRoutes);
+app.use("/api/profile",   profileRouter);
+app.use("/api/emotion",   userEmotionRoutes);
+app.use("/api/books",     bookRoutes);
+app.use("/api/community", communityRoutes);
 
 // ── 404 Handler ───────────────────────────────────────────────────────────────
 app.use((req, res) => {
