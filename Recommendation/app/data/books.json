@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Atomic Habits",
+    "genre": ["self-help"],
+    "emotion_tags": ["stress", "fear"],
+    "intent_tags": ["education", "self_improvement"],
+    "description": "Build good habits and improve focus."
+  },
+  {
+    "title": "Deep Work",
+    "genre": ["productivity"],
+    "emotion_tags": ["stress"],
+    "intent_tags": ["education"],
+    "description": "Focus deeply and avoid distractions."
+  },
+  {
+    "title": "The Alchemist",
+    "genre": ["fiction"],
+    "emotion_tags": ["sadness", "confusion"],
+    "intent_tags": ["general"],
+    "description": "A journey of self-discovery."
+  },
+  {
+    "title": "Harry Potter",
+    "genre": ["fantasy"],
+    "emotion_tags": ["happy", "bored"],
+    "intent_tags": ["entertainment"],
+    "description": "Magical adventure story."
+  },
+  {
+    "title": "Can't Hurt Me",
+    "genre": ["self-help"],
+    "emotion_tags": ["fear", "low_confidence"],
+    "intent_tags": ["self_improvement"],
+    "description": "Build mental toughness."
+  },
+  {
+    "title": "Ikigai",
+    "genre": ["self-help"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["self_improvement"],
+    "description": "Find purpose in life."
+  },
+  {
+    "title": "The Power of Now",
+    "genre": ["spiritual"],
+    "emotion_tags": ["stress"],
+    "intent_tags": ["relaxation"],
+    "description": "Live in the present moment."
+  },
+  {
+    "title": "Rich Dad Poor Dad",
+    "genre": ["finance"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["education"],
+    "description": "Learn financial mindset."
+  },
+  {
+    "title": "Think and Grow Rich",
+    "genre": ["self-help"],
+    "emotion_tags": ["low_confidence"],
+    "intent_tags": ["self_improvement"],
+    "description": "Success mindset principles."
+  },
+  {
+    "title": "The Subtle Art of Not Giving a F*ck",
+    "genre": ["self-help"],
+    "emotion_tags": ["stress"],
+    "intent_tags": ["relaxation"],
+    "description": "Focus on what matters."
+  },
+  {
+    "title": "Start With Why",
+    "genre": ["business"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["education"],
+    "description": "Discover purpose in work."
+  },
+  {
+    "title": "Zero to One",
+    "genre": ["startup"],
+    "emotion_tags": ["motivation"],
+    "intent_tags": ["education"],
+    "description": "Build innovative startups."
+  },
+  {
+    "title": "The Lean Startup",
+    "genre": ["business"],
+    "emotion_tags": ["confusion"],
+    "intent_tags": ["education"],
+    "description": "Startup methodology."
+  },
+  {
+    "title": "Crushing It",
+    "genre": ["business"],
+    "emotion_tags": ["motivation"],
+    "intent_tags": ["self_improvement"],
+    "description": "Build personal brand."
+  },
+  {
+    "title": "Eloquent JavaScript",
+    "genre": ["technical"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "Learn JavaScript deeply."
+  },
+  {
+    "title": "Clean Code",
+    "genre": ["technical"],
+    "emotion_tags": ["curiosity"],
+    "intent_tags": ["education"],
+    "description": "Write better code."
+  }
+]

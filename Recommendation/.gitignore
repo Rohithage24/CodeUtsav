@@ -1,0 +1,39 @@
+
+---
+
+# 🚫 📄 .gitignore
+
+```bash id="gitignore001"
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build files
+dist/
+build/
+
+# Model cache (IMPORTANT 🔥)
+.cache/
+.huggingface/

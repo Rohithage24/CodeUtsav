@@ -1,0 +1,56 @@
+{
+  "ias": [
+    {"title": "Indian Polity by Laxmikanth", "tags": ["polity"]},
+    {"title": "Spectrum Modern History", "tags": ["history"]},
+    {"title": "NCERT Geography", "tags": ["geography"]},
+    {"title": "Indian Economy by Ramesh Singh", "tags": ["economy"]},
+    {"title": "Environment by Shankar IAS", "tags": ["environment"]},
+    {"title": "Ethics Integrity Aptitude", "tags": ["ethics"]},
+    {"title": "Ancient India by RS Sharma", "tags": ["history"]},
+    {"title": "Medieval India by Satish Chandra", "tags": ["history"]}
+  ],
+
+  "entrepreneur": [
+    {"title": "Zero to One", "tags": ["startup"]},
+    {"title": "The Lean Startup", "tags": ["business"]},
+    {"title": "Rich Dad Poor Dad", "tags": ["finance"]},
+    {"title": "The $100 Startup", "tags": ["startup"]},
+    {"title": "Start With Why", "tags": ["leadership"]},
+    {"title": "Rework", "tags": ["business"]},
+    {"title": "Crushing It", "tags": ["branding"]},
+    {"title": "Atomic Habits", "tags": ["discipline"]}
+  ],
+
+  "developer": [
+    {"title": "Clean Code", "tags": ["coding"]},
+    {"title": "You Don’t Know JS", "tags": ["javascript"]},
+    {"title": "Eloquent JavaScript", "tags": ["javascript"]},
+    {"title": "Design Patterns", "tags": ["architecture"]},
+    {"title": "Cracking the Coding Interview", "tags": ["interview"]},
+    {"title": "Introduction to Algorithms", "tags": ["dsa"]},
+    {"title": "Python Crash Course", "tags": ["python"]},
+    {"title": "The Pragmatic Programmer", "tags": ["coding"]}
+  ],
+
+  "self_improvement": [
+    {"title": "Atomic Habits", "tags": ["discipline"]},
+    {"title": "The 7 Habits of Highly Effective People", "tags": ["growth"]},
+    {"title": "Think and Grow Rich", "tags": ["mindset"]},
+    {"title": "Can't Hurt Me", "tags": ["mental strength"]},
+    {"title": "Deep Work", "tags": ["focus"]},
+    {"title": "The Power of Now", "tags": ["mindfulness"]},
+    {"title": "Ikigai", "tags": ["purpose"]},
+    {"title": "Make Your Bed", "tags": ["discipline"]}
+  ],
+
+  "communication": [
+    {"title": "How to Win Friends and Influence People", "tags": ["communication"]},
+    {"title": "Talk Like TED", "tags": ["public speaking"]},
+    {"title": "Crucial Conversations", "tags": ["communication"]},
+    {"title": "Never Split the Difference", "tags": ["negotiation"]},
+    {"title": "The Art of Communication", "tags": ["skills"]},
+    {"title": "Speak to Win", "tags": ["speaking"]},
+    {"title": "Just Listen", "tags": ["listening"]},
+    {"title": "Everyone Communicates Few Connect", "tags": ["leadership"]}
+  ]
+}
