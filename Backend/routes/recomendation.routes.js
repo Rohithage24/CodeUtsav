@@ -5,6 +5,7 @@ import {
   saveDailyEmotion,
   getTodayEmotion,
   updateBookFeedback,
+  getWhatNextRecommendation
 } from "../Controller/userEmo.controller.js";
 import authMiddleware from "../middlewares/authMiddleware.js"; // ✅ FIX: all emotion routes need auth
 
@@ -19,5 +20,8 @@ router.post("/save", authMiddleware, saveDailyEmotion);
 
 // 🔹 Submit feedback on a recommended book
 router.post("/feedback", authMiddleware, updateBookFeedback);
+
+// routes
+router.post("/whatnext", getWhatNextRecommendation);
 
 export default router;

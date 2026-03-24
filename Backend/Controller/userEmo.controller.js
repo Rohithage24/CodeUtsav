@@ -222,3 +222,43 @@ export const updateBookFeedback = async (req, res) => {
     res.status(500).json({ success: false, error: err.message });
   }
 };
+
+
+// NEW: WhatNext Recommendation Controller
+export const getWhatNextRecommendation = async (req, res) => {
+  try {
+    const { input } = req.body;
+
+    if (!input) {
+      return res.status(400).json({ success: false, message: "Input is required" });
+    }
+
+    const prompt = `User likes these books/themes: "${input}". 
+Recommend 1 perfect book. Return ONLY a JSON object with this exact structure: 
+{ "title": "Book Title", "author": "Author Name", "reason": "Short explanation why", "vibe": "One word vibe" }`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      config: {
+        response_mime_type: "application/json"
+      }
+    });
+
+    const raw = response.text;
+    const parsed = JSON.parse(raw);
+
+    return res.status(200).json({
+      success: true,
+      data: parsed
+    });
+
+  } catch (error) {
+    console.error("Gemini Error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to get recommendation"
+    });
+  }
+};

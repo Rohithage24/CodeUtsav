@@ -3,45 +3,44 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
+import { GoogleGenAI } from "@google/genai";
+
 
 export default function WhatNext() {
   const [input, setInput] = useState("");
   const [recommendation, setRecommendation] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getGeminiRecommendation = async () => {
-    if (!input.trim()) return;
-    setLoading(true);
-    
-    try {
-      const prompt = `User likes these books/themes: "${input}". 
-      Recommend 1 perfect book. Return ONLY a JSON object with this exact structure: 
-      { "title": "Book Title", "author": "Author Name", "reason": "Short explanation why", "vibe": "One word vibe" }`;
 
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAwTcYKcFeMkQeYXSjTiZVo7QdyX-buKvA`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-          })
-        }
-      );
+ const getGeminiRecommendation = async () => {
+  if (!input.trim()) return;
 
-      const data = await response.json();
-      const textResponse = data.candidates[0].content.parts[0].text;
-      
-      // Remove any potential markdown formatting from Gemini
-      const cleanJson = textResponse.replace(/```json|```/g, "").trim();
-      setRecommendation(JSON.parse(cleanJson));
-    } catch (error) {
-      console.error("Gemini Error:", error);
-      alert("The stars are clouded right now. Please try again.");
-    } finally {
-      setLoading(false);
+  setLoading(true);
+
+  try {
+    const res = await fetch("http://localhost:5000/api/emotion/whatnext", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ input })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setRecommendation(data.data);
+    } else {
+      alert("Failed to get recommendation");
     }
-  };
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Server error");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="home-wrapper">
@@ -103,3 +102,6 @@ export default function WhatNext() {
     </div>
   );
 }
+
+
+
