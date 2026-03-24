@@ -1,18 +1,45 @@
-import React, { useState } from 'react'; // Added useState
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import LoginModal from "./LoginModal"; // Import the modal
+import LoginModal from "./LoginModal";
+import { useAuth } from '../context/AuthProvider';
+import axios from 'axios';
 
 function Navbar() {
-  // Logic to track if the popup is open
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  // 🔥 Auth context
+  const [auth, setAuth] = useAuth();
+
+  // 🔥 Logout function
+  const handleLogout = async () => {
+    try {
+      await axios.get("http://localhost:5000/api/user/logout", {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      });
+
+      // 🔹 Clear auth state
+      setAuth({
+        user: null,
+        token: "",
+      });
+
+      // 🔹 Remove from localStorage (IMPORTANT)
+      localStorage.removeItem("auth");
+
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
+          
           <div className="logo">
             <Link to="/">
-              {/* Dynamic CSS Book Icon */}
               <div className="logo-visual">
                 <div className="book-spine"></div>
                 <div className="book-page"></div>
@@ -20,21 +47,41 @@ function Navbar() {
               <span className="logo-text">BookAI</span>
             </Link>
           </div>
-          
+
           <div className="nav-links">
             <Link to="/" className="nav-item">Home</Link>
             <Link to="/about" className="nav-item">About</Link>
             <Link to="/contact" className="nav-item">Contact</Link>
-            
-            {/* Just the Login Item changed to trigger the popup */}
-            <div className="login-link" onClick={() => setIsLoginOpen(true)} style={{cursor: 'pointer'}}>
-              <button className="login-btn">Login</button>
-            </div>
+
+            {/* 🔥 CONDITION */}
+            {auth?.user ? (
+              <div className="user-section">
+                {/* <span className="nav-item">
+                  {auth.user.mobile}
+                </span> */}
+
+                <button 
+                  className="login-btn"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div 
+                className="login-link" 
+                onClick={() => setIsLoginOpen(true)} 
+                style={{ cursor: 'pointer' }}
+              >
+                <button className="login-btn">Login</button>
+              </div>
+            )}
+
           </div>
         </div>
       </nav>
 
-      {/* The Popup component */}
+      {/* Login Modal */}
       <LoginModal 
         isOpen={isLoginOpen} 
         onClose={() => setIsLoginOpen(false)} 
