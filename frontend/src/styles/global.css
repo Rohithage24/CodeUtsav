@@ -1111,28 +1111,87 @@ body {
   to { transform: scale(1) translateY(0); opacity: 1; }
 }
 /*--------------------------------chatbot------------------*/
-/* --- CHAT OVERLAY --- */
+/* Ensure the overlay covers the full viewport above all animations */
 .chat-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 2000;
+  background: rgba(2, 6, 23, 0.85); /* Deep dark blue for focus */
+  backdrop-filter: blur(12px);
+  z-index: 10000; /* Extremely high */
   display: flex;
-  justify-content: flex-end; /* Keeps drawer on the right */
+  justify-content: center;
+  align-items: center;
+  perspective: 2000px; /* Essential for the page flip 3D look */
+}
+
+.book-container {
+  display: flex;
+  width: 450px; /* Closed state width */
+  height: 600px;
+  position: relative;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.book-container.spread-view {
+  width: 900px; /* Opens to double the width */
+}
+
+/* Fix the user bubble appearance */
+.user-bubble {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 20px 20px 4px 20px;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--accent);
+}
+
+.spinner-sparkle {
+  font-size: 2rem;
+  animation: rotateSparkle 2s infinite linear;
+}
+
+@keyframes rotateSparkle {
+  from { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.3); }
+  to { transform: rotate(360deg) scale(1); }
+}
+/* --- CHAT OVERLAY --- */
+.chat-overlay {
+  position: fixed;
+  top: 0;      /* Ensure it starts at the very top */
+  left: 0;     /* Cover full width */
+  right: 0;
+  bottom: 0;
+  background: rgba(2, 6, 23, 0.7); /* Slightly darker for better focus */
+  backdrop-filter: blur(8px);
+  z-index: 9999; /* Higher than everything else */
+  display: flex;
+  justify-content: flex-end; /* Pushes the drawer to the right */
 }
 
 /* --- CHATBOT DRAWER --- */
 .chatbot-drawer {
-  width: 450px; /* Increased width for "enough space" */
-  height: 100%;
-  background: rgba(10, 11, 20, 0.9);
-  backdrop-filter: blur(25px);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  width: 450px;
+  height: 100vh; /* Force full height of the viewport */
+  background: #0f172a; /* Solid base color so it's not too transparent */
+  border-left: 1px solid rgba(99, 102, 241, 0.2);
   display: flex;
   flex-direction: column;
-  box-shadow: -15px 0 50px rgba(0, 0, 0, 0.6);
-  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.8);
+  /* The animation already handles the entrance */
 }
 
 @keyframes slideInRight {
@@ -1824,3 +1883,66 @@ body {
 
 .ai-reasoning strong { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; }
 .ai-reasoning p { margin-top: 5px; line-height: 1.5; font-style: italic; }
+/* --- GLOBAL BACKGROUND STYLES --- */
+
+.global-bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #020617; /* Deep Navy Base */
+  z-index: -10;
+  overflow: hidden;
+}
+
+/* Moving Glow Orbs for Atmosphere */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  z-index: -9;
+}
+
+.orb-1 { width: 600px; height: 600px; background: var(--accent); top: -10%; right: -5%; animation: float 20s infinite alternate; }
+.orb-2 { width: 400px; height: 400px; background: #4338ca; bottom: 5%; left: -5%; animation: float 25s infinite alternate-reverse; }
+.orb-3 { width: 300px; height: 300px; background: #7c3aed; top: 40%; left: 50%; animation: float 15s infinite; }
+
+/* Twinkling Sparkles */
+.sparkle-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.8);
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+
+@keyframes float {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50px, 100px); }
+}
+
+/* --- IMPORTANT: MAKE COMPONENTS TRANSPARENT --- */
+
+/* This ensures the global background shows through your pages */
+.home-wrapper, 
+.main-content, 
+.hero-section, 
+.content-section {
+  background: transparent !important;
+}
+
+/* Add a very subtle glass effect to cards so they stand out from the bg */
+.glass-card, .book-card, .sidebar-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
