@@ -41,6 +41,21 @@ const start = async () => {
     console.log(`   PATCH  http://localhost:${PORT}/api/books/:id                 [protected]`);
     console.log(`   DELETE http://localhost:${PORT}/api/books/:id                 [protected]`);
 
+    console.log(`\n📋 ── COMMUNITY ROUTES (/api/community) ──────────────────────`);
+    console.log(`   GET    http://localhost:${PORT}/api/community/feed             (Public)`);
+    console.log(`   GET    http://localhost:${PORT}/api/community/reviews/:title   (Public)`);
+    console.log(`   GET    http://localhost:${PORT}/api/community/ask?genre=       (Public)`);
+    console.log(`   GET    http://localhost:${PORT}/api/community/recommendations  (Public)`);
+    console.log(`   GET    http://localhost:${PORT}/api/community/post/:id         (Public)`);
+    console.log(`   GET    http://localhost:${PORT}/api/community/my-posts         [protected]`);
+    console.log(`   POST   http://localhost:${PORT}/api/community/post             [protected]`);
+    console.log(`   PATCH  http://localhost:${PORT}/api/community/post/:id         [protected]`);
+    console.log(`   DELETE http://localhost:${PORT}/api/community/post/:id         [protected]`);
+    console.log(`   POST   http://localhost:${PORT}/api/community/post/:id/like    [protected]`);
+    console.log(`   POST   http://localhost:${PORT}/api/community/post/:id/comment [protected]`);
+    console.log(`   DELETE http://localhost:${PORT}/api/community/post/:id/comment/:commentId [protected]`);
+    console.log(`   POST   http://localhost:${PORT}/api/community/post/:id/comment/:commentId/like [protected]`);
+
     console.log(`\n📋 ── HEALTH ─────────────────────────────────────────────────`);
     console.log(`   GET    http://localhost:${PORT}/health\n`);
   });
