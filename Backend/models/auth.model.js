@@ -1,62 +1,64 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const authSchema = new mongoose.Schema(
   {
     mobile: {
       type: String,
-      required: [true, "Mobile number is required"],
+      required: [true, 'Mobile number is required'],
       unique: true,
       trim: true,
-      match: [/^\+?[1-9]\d{7,14}$/, "Invalid mobile number format"],
+      match: [/^\+?[1-9]\d{7,14}$/, 'Invalid mobile number format']
     },
 
     name: {
       type: String,
       trim: true,
-      default: null,
+      default: null
     },
 
     isVerified: {
       type: Boolean,
-      default: false,
+      default: false
     },
-    userProfile:{
-        type : Boolean,
-        default: false
+    lastVisitDate: {
+      type: String, // YYYY-MM-DD
+      default: null
     },
-
+    dayVisit: {
+      type: Boolean,
+      default: false
+    },
     otp: {
       type: String,
-      default: null,
+      default: null
     },
 
     otpExpiry: {
       type: Date,
-      default: null,
+      default: null
     },
 
-    token :{
+    token: {
       type: String,
-      default: null,
+      default: null
     },
-    
+
     otpAttempts: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   {
-    timestamps: true, 
+    timestamps: true
   }
-);
-
+)
 
 authSchema.methods.clearOtp = function () {
-  this.otp = null;
-  this.otpExpiry = null;
-  this.otpAttempts = 0;
-};
+  this.otp = null
+  this.otpExpiry = null
+  this.otpAttempts = 0
+}
 
-const AuthUser = mongoose.model("AuthUser", authSchema);
+const AuthUser = mongoose.model('AuthUser', authSchema)
 
-export default AuthUser;
+export default AuthUser

@@ -9,6 +9,7 @@
     "dev": "npx nodemon index.js"
   },
   "dependencies": {
+    "@google/genai": "^1.46.0",
     "axios": "^1.13.6",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.9.0",
