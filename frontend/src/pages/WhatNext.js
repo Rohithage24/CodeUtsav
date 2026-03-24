@@ -1,77 +1,101 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 
-// 3D Flip Variants
-const bookFlipVariants = {
-  initial: {
-    rotateY: -110, // Starts "closed" or tucked back
-    opacity: 0,
-    transformPerspective: 2000,
-  },
-  animate: {
-    rotateY: 0,
-    opacity: 1,
-    transition: {
-      duration: 1.2,
-      ease: [0.645, 0.045, 0.355, 1.000], // Smooth cubic-bezier
-    }
-  },
-  exit: {
-    rotateY: 110,
-    opacity: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }
-  }
-};
-
 export default function WhatNext() {
+  const [input, setInput] = useState("");
+  const [recommendation, setRecommendation] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const getGeminiRecommendation = async () => {
+    if (!input.trim()) return;
+    setLoading(true);
+    
+    try {
+      const prompt = `User likes these books/themes: "${input}". 
+      Recommend 1 perfect book. Return ONLY a JSON object with this exact structure: 
+      { "title": "Book Title", "author": "Author Name", "reason": "Short explanation why", "vibe": "One word vibe" }`;
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAwTcYKcFeMkQeYXSjTiZVo7QdyX-buKvA`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        }
+      );
+
+      const data = await response.json();
+      const textResponse = data.candidates[0].content.parts[0].text;
+      
+      // Remove any potential markdown formatting from Gemini
+      const cleanJson = textResponse.replace(/```json|```/g, "").trim();
+      setRecommendation(JSON.parse(cleanJson));
+    } catch (error) {
+      console.error("Gemini Error:", error);
+      alert("The stars are clouded right now. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="home-wrapper" style={{ overflow: 'hidden', perspective: '2000px' }}>
+    <div className="home-wrapper">
       <Navbar />
       <Sidebar />
 
+      {/* FIXED: motion.main now wraps the ENTIRE content area */}
       <motion.main 
         className="main-content"
-        variants={bookFlipVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        style={{ originX: 0 }} // This is the "Spine" hinge
+        initial={{ rotateY: -30, opacity: 0 }}
+        animate={{ rotateY: 0, opacity: 1 }}
+        exit={{ rotateY: 30, opacity: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        style={{ originX: 0, perspective: "2000px" }}
       >
-        <section className="content-section sparkle-bg" style={{ minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          
-          <div className="glass-card what-next-card">
-            <div className="book-spine-accent"></div> {/* Visual spine detail */}
-            
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <h1 className="text-gradient" style={{ fontSize: '3.5rem' }}>The Next Chapter</h1>
-              <p className="description-text">
-                Your journey doesn't end here. Based on your recent explorers, 
-                the stars suggest a path toward <strong>Deep Work</strong>.
-              </p>
-              
-              <div className="stats-preview">
-                <div className="stat-item">
-                  <span className="stat-label">Mood Match</span>
-                  <span className="stat-value">98%</span>
-                </div>
-              </div>
+        <section className="content-section sparkle-bg what-next-container">
+          <div className="glass-card prediction-box">
+            <h2 className="text-gradient">Consult the <span className="text-glow">Archivist</span></h2>
+            <p className="subtitle">Tell us what you've read recently or the specific vibes you're craving.</p>
 
-              <button className="post-btn" style={{ marginTop: '30px', width: '100%' }}>
-                Turn the Page ✦
+            <div className="input-group">
+              <textarea 
+                placeholder="Ex: I loved the stoicism in 'Meditations' and want something similarly life-changing..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <button 
+                className="post-btn manifest-btn" 
+                onClick={getGeminiRecommendation}
+                disabled={loading}
+              >
+                {loading ? "Reading the Constellations..." : "Manifest My Next Read ✦"}
               </button>
-            </motion.div>
+            </div>
+
+            <AnimatePresence>
+              {recommendation && (
+                <motion.div 
+                  className="result-card"
+                  initial={{ y: 50, opacity: 0, scale: 0.9 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{ type: "spring", damping: 15 }}
+                >
+                  <div className="result-badge">{recommendation.vibe}</div>
+                  <h3>{recommendation.title}</h3>
+                  <p className="author">by {recommendation.author}</p>
+                  <div className="ai-reasoning">
+                    <strong>The Archivist's Note:</strong>
+                    <p>{recommendation.reason}</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-          
         </section>
       </motion.main>
 
