@@ -7,12 +7,17 @@ const BookCard = ({ book }) => {
         <div className="book-visual">
           <span className="book-icon-large">📖</span>
         </div>
-        <div className="book-badge">{book.genre}</div>
+        {/* Displays the first genre from the array */}
+        <div className="book-badge">{book.genre[0]}</div>
       </div>
       
       <div className="book-info">
         <h3>{book.title}</h3>
         <p className="author-name">by {book.author}</p>
+        
+        {/* Added description as a tooltip or small text if you want, 
+            otherwise the layout stays exactly as you had it. */}
+        <p className="book-description" style={{display: 'none'}}>{book.description}</p>
         
         <div className="book-footer">
           <button className="view-btn">

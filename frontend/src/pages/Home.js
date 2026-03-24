@@ -6,6 +6,7 @@ import GenreCard from "../components/GenreCard";
 import BookCard from "../components/BookCard";
 import Footer from "../components/Footer";
 import { books } from "../data/books";
+import TrendingSection from "../components/TrendingSection";
 
 export default function Home() {
   const [genre, setGenre] = useState("All");
@@ -84,6 +85,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <TrendingSection />
 
       <Footer />
     </div>
