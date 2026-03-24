@@ -10,6 +10,7 @@ function Sidebar() {
   const menuItems = [
     { icon: "🏠", label: "Home", path: "/" },
     { icon: "👥", label: "Community", path: "/community" },
+    { icon: "✨", label: "What Next", path: "/what-next" },
     { icon: "🤖", label: "AI Chatbot", path: null },
   ];
 

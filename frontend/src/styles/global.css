@@ -1664,3 +1664,82 @@ body {
 
 .like-btn:hover { color: #f43f5e; }
 .reply-btn:hover { color: #fff; }
+/*-------transition from sidebar to what next page---------*/
+/* --- BOOK FOLD ANIMATION HELPER --- */
+.home-wrapper {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Add a spine shadow during transition */
+.main-content::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Sexy Glow for the 'What Next' Button in Sidebar */
+.sidebar-link[href*="what-next"] .sidebar-icon {
+  filter: drop-shadow(0 0 8px var(--accent));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+/* --- 3D BOOK TRANSITION STYLES --- */
+
+.chat-page-layout, .main-content {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.what-next-card {
+  position: relative;
+  padding: 60px;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid var(--accent); /* Mimics the book spine */
+  box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* The "Spine" Shadow Effect */
+.book-spine-accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
+  pointer-events: none;
+}
+
+.stats-preview {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+.stat-value { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+
+/* Ensure the wrapper doesn't cut off the 3D rotation */
+.home-wrapper {
+  perspective: 2000px;
+  overflow-x: hidden;
+}
