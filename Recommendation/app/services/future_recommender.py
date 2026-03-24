@@ -22,9 +22,12 @@ def get_future_recommendations(data):
     books = goals_data.get(key, [])
 
     return [
-        {
-            "title": book["title"],
-            "reason": f"Helps you become a {key}"
-        }
-        for book in books[:3]
-    ]
+    {
+        "title": book["title"],
+        "author": book.get("author", "Unknown"),   # ✅ ADD THIS
+        "reason": f"Helps you become a {key}",
+        "reviews": book.get("reviews", [])[:2]     # (optional but good)
+    }
+    for book in books[:3]
+]
+        
