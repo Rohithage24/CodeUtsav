@@ -30,11 +30,12 @@ def get_recommendations(data):
     ranked = sorted(zip(books, scores), key=lambda x: x[1], reverse=True)
 
     return [
-        {
-            "title": book["title"],
-            "reason": f"Matches your mood '{emotion}' and goal '{intent}'",
-            "score": round(float(score), 2),
-            "reviews": book.get("reviews", [])[:2]
-        }
-        for book, score in ranked[:3]
-    ]
+    {
+        "title": book["title"],
+        "author": book.get("author", "Unknown"),   # ✅ ADD THIS
+        "reason": f"Matches your mood '{emotion}' and goal '{intent}'",
+        "score": round(float(score), 2),
+        "reviews": book.get("reviews", [])[:2]
+    }
+    for book, score in ranked[:3]
+]
